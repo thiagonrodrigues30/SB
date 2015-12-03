@@ -75,7 +75,7 @@ public class TAABB24H {
 				valor = scanner.nextDouble();
 				try {
 					banco.debitar(numero, valor);
-					System.out.println("Operação realizada com sucesso!");
+					System.out.println("Operação realizada com Sucesso!");
 				} catch (TNRException tnre) {
 					System.out.println("Erro: " + tnre.getMessage());
 				}
