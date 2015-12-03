@@ -1,5 +1,7 @@
 package br.ufc.banco.conta;
 
+import br.ufc.banco.conta.excecoes.SIException;
+
 /*	Definição
  * O método debitar(double valor) da classe ContaImposto 
  * não está observando o caso excepcional de 
