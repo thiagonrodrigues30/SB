@@ -26,7 +26,7 @@ public class ContaImposto extends ContaAbstrata {
 	
 	public void debitar(double valor) throws SIException{
 		
-		if (this.saldo >= (valor + (valor * 0.001)) {
+		if (this.saldo >= (valor + (valor * 0.001))) {
 			this.saldo = this.saldo - (valor + (valor * 0.001));
 		} else {
 			throw new SIException(numero, valor);
