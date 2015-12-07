@@ -20,19 +20,16 @@ public class ArrayContas implements IRepositorioContas{
 	
 
 	public void apagar(String numero) throws CIException {
-		for(Iterator<ContaAbstrata> iterator = contas.iterator();iterator.hasNext();){
-			ContaAbstrata c = iterator.next();
-			if ( c.obterNumero() == numero ){
-				contas.remove(c);
-			}
-			else {
-				throw new CIException(numero);
+		ContaAbstrata conta = this.procurar(numero);
+		if (conta != null) {
+			this.contas.remove(conta);
+		} else {
+			throw new CIException(numero);
 		}
-	}
 
 	}
 	public void inserir(ContaAbstrata conta) throws CEException {
-		if (this.procurar(conta.obterNumero()) != null ){
+		if (this.procurar(conta.obterNumero()) == null ){
 			this.contas.add(conta);
 		}
 		else {
