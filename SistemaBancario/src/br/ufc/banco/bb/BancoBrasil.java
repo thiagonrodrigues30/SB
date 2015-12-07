@@ -1,5 +1,8 @@
 package br.ufc.banco.bb;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
 import br.ufc.banco.bb.excecoes.TCIException;
 import br.ufc.banco.bb.excecoes.TNRException;
 import br.ufc.banco.conta.ContaAbstrata;
@@ -121,5 +124,20 @@ public class BancoBrasil {
 			}
 		}
 		return saldo;
+	}
+	
+	public IRepositorioContas desserializaConta(String arquivo){
+		IRepositorioContas repositorio = null;
+		try {
+			FileInputStream fileIn = new FileInputStream(arquivo);
+			ObjectInputStream objIn = new ObjectInputStream(fileIn);
+			repositorio = (IRepositorioContas) objIn.readObject();
+			fileIn.close();
+			objIn.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return repositorio;
 	}
 }

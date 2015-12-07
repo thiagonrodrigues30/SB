@@ -1,5 +1,8 @@
 package br.ufc.banco.dados;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Vector;
 
 import br.ufc.banco.conta.ContaAbstrata;
@@ -58,4 +61,18 @@ public class VectorContas implements IRepositorioContas {
 		}
 		return null;
 	}
+	
+	public void serializaConta(String arquivo){
+		try {
+			FileOutputStream fileOut = new FileOutputStream(arquivo);
+			ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+			objOut.writeObject(this.getClass());
+			fileOut.close();
+			objOut.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }

@@ -4,10 +4,13 @@ import br.ufc.banco.conta.ContaAbstrata;
 import br.ufc.banco.dados.excecoes.CEException;
 import br.ufc.banco.dados.excecoes.CIException;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class ArrayContas implements IRepositorioContas {
+public class ArrayContas implements IRepositorioContas{
 
 	private ArrayList<ContaAbstrata> contas = null; //Vetor começa sem nenhuma conta 
 	
@@ -29,7 +32,7 @@ public class ArrayContas implements IRepositorioContas {
 
 	}
 	public void inserir(ContaAbstrata conta) throws CEException {
-		if (this.procurar(conta.obterNumero()) == null ){
+		if (this.procurar(conta.obterNumero()) != null ){
 			this.contas.add(conta);
 		}
 		else {
@@ -63,4 +66,18 @@ public class ArrayContas implements IRepositorioContas {
 		}
 		return null;
 	}
+	
+	public void serializaConta(String arquivo){
+		try {
+			FileOutputStream fileOut = new FileOutputStream(arquivo);
+			ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+			objOut.writeObject(this.getClass());
+			fileOut.close();
+			objOut.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }
