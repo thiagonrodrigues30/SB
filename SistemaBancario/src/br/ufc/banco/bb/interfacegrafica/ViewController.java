@@ -9,19 +9,20 @@ public class ViewController {
 
 	private View view;
 	private ActionListener actionListener;
-	
-	
+
+
+
 	public ViewController(View v){
 		this.view=v;
 	}
-	
+
 	public void control(){
-		
+
 		actionListener = new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				doSomething();
 			}
 		};
@@ -33,19 +34,22 @@ public class ViewController {
 		view.getRemoverConta().addActionListener(actionListener);
 		view.getRenderJuros().addActionListener(actionListener);
 		view.getRenderBonus().addActionListener(actionListener);
-		
-		
-		
+
+
+
 	}
+
+
 	public void doSomething(){
 		String messege = "This Button will do Something,right now, I'm do nothing";
 		JOptionPane.showMessageDialog(null, messege);
 	}
-	/*
-	public static void main(String[] args) {
+
+	public static void main(String[] args){
 		View v = new View();
-		ViewController v2 = new ViewController(v);		
-		v2.control();
-	}*/
-	
+		ViewController vc = new ViewController(v);
+		vc.control();
+	}
+
+
 }
