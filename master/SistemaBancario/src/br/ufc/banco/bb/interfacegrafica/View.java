@@ -2,14 +2,20 @@ package br.ufc.banco.bb.interfacegrafica;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.GridLayout;
+//import java.awt.Rectangle;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+//import javax.swing.JTextField;
+
+import br.ufc.banco.bb.interfacegrafica.MyJLabelVersion; // Minha versão de JLabel....
 
 
+@SuppressWarnings("serial")
 public class View extends JFrame{
 
   private JButton criarConta;
@@ -20,20 +26,22 @@ public class View extends JFrame{
   private JButton removerConta;
   private JButton renderJuros;
   private JButton renderBonus;
-
+  private JPanel TelaPrincipal;
+  private Font mainFont;
+  //private JTextField entrada; não precisa...
 
   public View(){
     super ("Banco Gambioso");
     Container container = getContentPane();
     Container container2 = new JPanel();
-    JLabel TelaPrincipal = new JLabel();
 
+    mainFont = new Font("Serif", Font.BOLD, 15);
+
+    MainScream(); // chamanado um monte de alterações ocupando espaço
 
     container.setLayout(new BorderLayout());
     container.add(BorderLayout.CENTER, TelaPrincipal);
     container.add(BorderLayout.EAST,container2);
-    container.add(BorderLayout.SOUTH, new JLabel("Sua segurança está garantida usando o Banco do Gambioso, pois temos o melhor algoritmo com altíssimo nível de gambiosidade"));
-
     container2.setLayout(new GridLayout(8,1));
 
     criarConta = new JButton("Criar Conta");
@@ -56,10 +64,54 @@ public class View extends JFrame{
 
 
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setSize(700,500);
+    setSize(800,500);
     setVisible(true);
   }
 
+  public void MainScream(){
+
+    String text = "================================";
+    String line = "Bem Vindo ao Banco do Brasil";
+    String line1 = "Terminal de Auto-Atendimento";
+    String line2 = " [1] Cadastrar Conta";
+    String line3 = " [2] Fazer Depósito";
+    String line4 = " [3] Realizar Saque";
+    String line5 = " [4] Transferência";
+    String line6 = " [5] Visualizar Saldo";
+    String line7 = " [6] Remover Conta";
+    String line8 = " [7] Render Juros";
+    String line9 = " [8] Render Bonus";
+    String line10 = " [9] Sair";
+    String line11 = "Digite o Botão com a opção desejada: ";
+
+    //entrada = new JTextField();
+    //entrada.setBounds(new Rectangle(50, 50));
+    TelaPrincipal = new JPanel();
+
+    TelaPrincipal.setLayout(new GridLayout(20,1,0,0));
+    TelaPrincipal.add(new MyJLabelVersion(text,mainFont));
+    TelaPrincipal.add(new MyJLabelVersion(line,mainFont));
+    TelaPrincipal.add(new MyJLabelVersion(line1,mainFont));
+    TelaPrincipal.add(new MyJLabelVersion(text,mainFont));
+    TelaPrincipal.add(new MyJLabelVersion(line2,mainFont));
+    TelaPrincipal.add(new MyJLabelVersion(line3,mainFont));
+    TelaPrincipal.add(new MyJLabelVersion(line4,mainFont));
+    TelaPrincipal.add(new MyJLabelVersion(line5,mainFont));
+    TelaPrincipal.add(new MyJLabelVersion(line6,mainFont));
+    TelaPrincipal.add(new MyJLabelVersion(line7,mainFont));
+    TelaPrincipal.add(new MyJLabelVersion(line8,mainFont));
+    TelaPrincipal.add(new MyJLabelVersion(line9,mainFont));
+    TelaPrincipal.add(new MyJLabelVersion(line10,mainFont));
+    TelaPrincipal.add(new MyJLabelVersion(line11,mainFont));
+    TelaPrincipal.add(new MyJLabelVersion(text,mainFont));
+    TelaPrincipal.add(new MyJLabelVersion("Sua segurança está garantida usando o Banco do Gambioso,", mainFont));
+    TelaPrincipal.add(new MyJLabelVersion("pois temos o melhor algoritmo com altíssimo nível de gambiosidade", mainFont));
+  }
+
+
+  public JPanel getTelaPrincipal() {
+    return TelaPrincipal;
+  }
 
   public JButton getCriarConta() {
     return criarConta;
