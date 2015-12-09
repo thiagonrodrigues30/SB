@@ -7,11 +7,17 @@ import br.ufc.banco.dados.excecoes.CIException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class ArrayContas implements IRepositorioContas{
+public class ArrayContas implements IRepositorioContas, Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private ArrayList<ContaAbstrata> contas = null; //Vetor começa sem nenhuma conta 
 	
 	public ArrayContas(){

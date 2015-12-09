@@ -3,14 +3,20 @@ package br.ufc.banco.dados;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Vector;
 
 import br.ufc.banco.conta.ContaAbstrata;
 import br.ufc.banco.dados.excecoes.CEException;
 import br.ufc.banco.dados.excecoes.CIException;
 
-public class VectorContas implements IRepositorioContas {
+public class VectorContas implements IRepositorioContas, Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Vector<ContaAbstrata> contas = null;
 
 	public VectorContas() {

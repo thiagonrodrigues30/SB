@@ -1,5 +1,6 @@
 package br.ufc.banco.bb;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
@@ -9,7 +10,9 @@ import br.ufc.banco.conta.ContaAbstrata;
 import br.ufc.banco.conta.ContaEspecial;
 import br.ufc.banco.conta.ContaPoupanca;
 import br.ufc.banco.conta.excecoes.SIException;
+import br.ufc.banco.dados.ArrayContas;
 import br.ufc.banco.dados.IRepositorioContas;
+import br.ufc.banco.dados.VectorContas;
 import br.ufc.banco.dados.excecoes.CEException;
 import br.ufc.banco.dados.excecoes.CIException;
 
@@ -126,18 +129,24 @@ public class BancoBrasil {
 		return saldo;
 	}
 	
-	public IRepositorioContas desserializaConta(String arquivo){
-		IRepositorioContas repositorio = null;
+	public void desserializaConta(String arquivo){
 		try {
 			FileInputStream fileIn = new FileInputStream(arquivo);
 			ObjectInputStream objIn = new ObjectInputStream(fileIn);
-			repositorio = (IRepositorioContas) objIn.readObject();
+			
+			if (this.repositorio instanceof ArrayContas){
+				repositorio = (ArrayContas) objIn.readObject();
+			}
+			
+			if (this.repositorio instanceof VectorContas){
+				repositorio = (VectorContas) objIn.readObject();
+			}
+			
 			fileIn.close();
 			objIn.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return repositorio;
 	}
 }

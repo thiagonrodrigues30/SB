@@ -1,5 +1,6 @@
 package br.ufc.banco.bb;
 
+import java.io.File;
 import java.util.Scanner;
 
 import br.ufc.banco.bb.excecoes.TNRException;
