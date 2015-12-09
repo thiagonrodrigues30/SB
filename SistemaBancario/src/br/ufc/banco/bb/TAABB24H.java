@@ -10,10 +10,20 @@ import br.ufc.banco.conta.ContaPoupanca;
 import br.ufc.banco.dados.VectorContas;
 import br.ufc.banco.dados.excecoes.CEException;
 import br.ufc.banco.dados.excecoes.CIException;
+import br.ufc.banco.bb.interfacegrafica.View;
+import br.ufc.banco.bb.interfacegrafica.ViewController;
 
 public class TAABB24H {
 
 	private static Scanner scanner = new Scanner(System.in);
+
+
+	/*VIEWS*/
+	private static View v;
+	private static ViewController vc;
+
+
+
 
 	public static void main(String[] args) {
 		BancoBrasil banco = new BancoBrasil(new VectorContas());
