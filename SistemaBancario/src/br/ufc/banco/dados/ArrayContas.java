@@ -74,7 +74,8 @@ public class ArrayContas implements IRepositorioContas, Serializable{
 		try {
 			FileOutputStream fileOut = new FileOutputStream(arquivo);
 			ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
-			objOut.writeObject(this.getClass());
+			objOut.writeObject(this);
+			System.out.println("A conta foi serializada com sucesso!");
 			fileOut.close();
 			objOut.close();
 		} catch (IOException e) {

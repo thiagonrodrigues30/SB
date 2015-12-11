@@ -45,11 +45,11 @@ public class ViewController {
 		JOptionPane.showMessageDialog(null, messege);
 	}
 
+	/*
 	public static void main(String[] args){
 		View v = new View();
 		ViewController vc = new ViewController(v);
 		vc.control();
-	}
-
+	}*/
 
 }

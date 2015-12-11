@@ -71,6 +71,7 @@ public class TAABB24H {
 				String numero = scanner.next();
 				System.out.println("Digite o valor a ser creditado: ");
 				double valor = scanner.nextDouble();
+				banco.desserializaConta("Conta.ser");
 				try {
 					banco.creditar(numero, valor);
 					System.out.println("Operação realizada com sucesso!");
@@ -84,6 +85,7 @@ public class TAABB24H {
 				numero = scanner.next();
 				System.out.println("Digite o valor a ser debitado: ");
 				valor = scanner.nextDouble();
+				banco.desserializaConta("Conta.ser");
 				try {
 					banco.debitar(numero, valor);
 					System.out.println("Operação realizada com Sucesso!");
@@ -99,7 +101,7 @@ public class TAABB24H {
 				String numeroDestino = scanner.next();
 				System.out.println("Digite o valor a ser debitado: ");
 				valor = scanner.nextDouble();
-
+				banco.desserializaConta("Conta.ser");
 				try {
 					banco.transferir(numeroOrigem, numeroDestino, valor);
 					System.out.println("Operação realizada com sucesso!");
@@ -111,6 +113,7 @@ public class TAABB24H {
 			case 5:
 				System.out.println("Digite o número da conta: ");
 				numero = scanner.next();
+				banco.desserializaConta("Conta.ser");
 				try {
 					System.out.println("Conta numero: " + numero);
 					System.out.println("Saldo: " + banco.saldo(numero));
@@ -122,6 +125,7 @@ public class TAABB24H {
 			case 6:
 				System.out.println("Digite o número da conta: ");
 				numero = scanner.next();
+				banco.desserializaConta("Conta.ser");
 				try {
 					banco.remover(numero);
 					System.out.println("Operação realizada com sucesso!");
@@ -132,6 +136,7 @@ public class TAABB24H {
 			case 7:
 				System.out.println("Digite o número da conta: ");
 				numero = scanner.next();
+				banco.desserializaConta("Conta.ser");
 				try {
 					banco.renderJuros(numero);
 					System.out.println("Operação realizada com sucesso!");
@@ -143,6 +148,7 @@ public class TAABB24H {
 			case 8:
 				System.out.println("Digite o número da conta: ");
 				numero = scanner.next();
+				banco.desserializaConta("Conta.ser");
 				try {
 					banco.renderBonus(numero);
 					System.out.println("Operação realizada com sucesso!");
