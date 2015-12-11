@@ -18,7 +18,7 @@ import br.ufc.banco.dados.excecoes.CIException;
 
 public class BancoBrasil {
 
-	private IRepositorioContas repositorio;
+	private IRepositorioContas repositorio = null;
 
 	private double taxa = 0.001;
 
@@ -28,16 +28,19 @@ public class BancoBrasil {
 
 	public void cadastrar(ContaAbstrata conta) throws CEException {
 		this.repositorio.inserir(conta);
+		repositorio.serializaConta("Conta.ser");
 	}
 
 	public void remover(String numero) throws CIException {
 		this.repositorio.apagar(numero);
+		repositorio.serializaConta("Conta.ser");
 	}
 
 	public void creditar(String numConta, double valor) throws TNRException {
 		ContaAbstrata conta = this.repositorio.procurar(numConta);
 		if (conta != null) {
 			conta.creditar(valor);
+			repositorio.serializaConta("Conta.ser");
 		} else {
 			throw new TNRException(new CIException(numConta));
 		}
@@ -49,6 +52,7 @@ public class BancoBrasil {
 		if (conta != null) {
 			try {
 				conta.debitar(valor);
+				repositorio.serializaConta("Conta.ser");
 			} catch (SIException sie) {
 				throw new TNRException(sie);
 			}
@@ -76,6 +80,7 @@ public class BancoBrasil {
 				try {
 					contaOrigem.debitar(valor);
 					contaDestino.creditar(valor);
+					repositorio.serializaConta("Conta.ser");
 				} catch (SIException sie) {
 					throw new TNRException(sie);
 				}
@@ -93,6 +98,7 @@ public class BancoBrasil {
 		if (contaAuxiliar != null) {
 			if (contaAuxiliar instanceof ContaPoupanca) {
 				((ContaPoupanca) contaAuxiliar).rendeJuros(this.taxa);
+				repositorio.serializaConta("Conta.ser");
 			} else {
 				throw new TNRException(new TCIException(numConta));
 			}
@@ -106,6 +112,7 @@ public class BancoBrasil {
 		if (contaAuxiliar != null) {
 			if (contaAuxiliar instanceof ContaEspecial) {
 				((ContaEspecial) contaAuxiliar).rendeBonus();
+				repositorio.serializaConta("Conta.ser");
 			} else {
 				throw new TNRException(new TCIException(numConta));
 			}
@@ -140,6 +147,7 @@ public class BancoBrasil {
 			
 			if (this.repositorio instanceof VectorContas){
 				repositorio = (VectorContas) objIn.readObject();
+				System.out.println("Conta desserializada com sucesso!");
 			}
 			
 			fileIn.close();

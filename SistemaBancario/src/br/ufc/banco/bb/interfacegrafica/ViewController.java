@@ -46,6 +46,6 @@ public class ViewController {
 		View v = new View();
 		ViewController v2 = new ViewController(v);		
 		v2.control();
-	}*/
-	
+	}
+	*/
 }
