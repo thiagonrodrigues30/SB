@@ -1,53 +1,170 @@
 package br.ufc.banco.bb.interfacegrafica;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.GridLayout;
+//import java.awt.Rectangle;
 
-import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+//import javax.swing.JTextField;
 
-public class ViewController {
+import br.ufc.banco.bb.interfacegrafica.MyJLabelVersion; // Minha versão de JLabel....
 
-	private View view;
-	private ActionListener actionListener;
+@SuppressWarnings("serial")
+public class View extends JFrame {
+
+	private JButton criarConta;
+	private JButton fazerDeposito;
+	private JButton realizarSaque;
+	private JButton transferencia;
+	private JButton visualizarSaldo;
+	private JButton removerConta;
+	private JButton renderJuros;
+	private JButton renderBonus;
+
+
+	private static Font mainFont = new Font("Serif", Font.BOLD, 15);
 
 
 
-	public ViewController(View v){
-		this.view=v;
+	public View() {
+
+		super("Banco Gambioso");
+		Container container = getContentPane();
+
+		JPanel centro = new JPanel();
+		JPanel east = new JPanel();
+		east = getBotoes();
+		centro = getMainScream();
+
+
+		container.setLayout(new BorderLayout());
+		container.add(BorderLayout.CENTER, centro);
+		container.add(BorderLayout.EAST, east);
+
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(800, 500);
+		setVisible(true);
 	}
 
-	public void control(){
+	public JPanel getBotoes() {
 
-		actionListener = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				doSomething();
-			}
-		};
-		view.getCriarConta().addActionListener(actionListener);
-		view.getFazerDeposito().addActionListener(actionListener);
-		view.getRealizarSaque().addActionListener(actionListener);
-		view.getTransferencia().addActionListener(actionListener);
-		view.getVisualizarSaldo().addActionListener(actionListener);
-		view.getRemoverConta().addActionListener(actionListener);
-		view.getRenderJuros().addActionListener(actionListener);
-		view.getRenderBonus().addActionListener(actionListener);
-
-
-
+		JPanel container2 = new JPanel();
+		container2.setLayout(new GridLayout(8, 1));
+		criarConta = new JButton("Criar Conta");
+		container2.add(criarConta);
+		fazerDeposito = new JButton("Fazer Depósito");
+		container2.add(fazerDeposito);
+		realizarSaque = new JButton("Realizar Saque");
+		container2.add(realizarSaque);
+		transferencia = new JButton("Transferência");
+		container2.add(transferencia);
+		visualizarSaldo = new JButton("Visualizar Saldo");
+		container2.add(visualizarSaldo);
+		removerConta = new JButton("Remover Conta");
+		container2.add(removerConta);
+		renderJuros = new JButton("Render Juros");
+		container2.add(renderJuros);
+		renderBonus = new JButton("Render Bonus");
+		container2.add(renderBonus);
+		return container2;
 	}
 
 
-	public void doSomething(){
-		String messege = "This Button will do Something,right now, I'm do nothing";
-		JOptionPane.showMessageDialog(null, messege);
+	public JPanel getMainScream() {
+
+		String text = "================================";
+		String line = "Bem Vindo ao Banco do Brasil";
+		String line1 = "Terminal de Auto-Atendimento";
+		String line2 = " [1] Cadastrar Conta";
+		String line3 = " [2] Fazer Depósito";
+		String line4 = " [3] Realizar Saque";
+		String line5 = " [4] Transferência";
+		String line6 = " [5] Visualizar Saldo";
+		String line7 = " [6] Remover Conta";
+		String line8 = " [7] Render Juros";
+		String line9 = " [8] Render Bonus";
+		String line10 = " [9] Sair";
+		String line11 = "Digite o Botão com a opção desejada: ";
+
+		JPanel TelaPrincipal = new JPanel();
+
+		TelaPrincipal.setLayout(new GridLayout(20, 1, 0, 0));
+		TelaPrincipal.add(new MyJLabelVersion(text, mainFont));
+		TelaPrincipal.add(new MyJLabelVersion(line, mainFont));
+		TelaPrincipal.add(new MyJLabelVersion(line1, mainFont));
+		TelaPrincipal.add(new MyJLabelVersion(text, mainFont));
+		TelaPrincipal.add(new MyJLabelVersion(line2, mainFont));
+		TelaPrincipal.add(new MyJLabelVersion(line3, mainFont));
+		TelaPrincipal.add(new MyJLabelVersion(line4, mainFont));
+		TelaPrincipal.add(new MyJLabelVersion(line5, mainFont));
+		TelaPrincipal.add(new MyJLabelVersion(line6, mainFont));
+		TelaPrincipal.add(new MyJLabelVersion(line7, mainFont));
+		TelaPrincipal.add(new MyJLabelVersion(line8, mainFont));
+		TelaPrincipal.add(new MyJLabelVersion(line9, mainFont));
+		TelaPrincipal.add(new MyJLabelVersion(line10, mainFont));
+		TelaPrincipal.add(new MyJLabelVersion(line11, mainFont));
+		TelaPrincipal.add(new MyJLabelVersion(text, mainFont));
+		TelaPrincipal.add(new MyJLabelVersion("Sua segurança está garantida usando o Banco do Gambioso,", mainFont));
+		TelaPrincipal.add(
+				new MyJLabelVersion("pois temos o melhor algoritmo com altíssimo nível de gambiosidade", mainFont));
+
+		return TelaPrincipal;
 	}
 
-	public static void main(String[] args){
-		View v = new View();
-		ViewController vc = new ViewController(v);
-		vc.control();
+	public Font getMainFont() {
+		return mainFont;
 	}
+
+	public JButton getCriarConta() {
+		return criarConta;
+	}
+
+	public JButton getFazerDeposito() {
+		return fazerDeposito;
+	}
+
+	public JButton getRealizarSaque() {
+		return realizarSaque;
+	}
+
+	public JButton getTransferencia() {
+		return transferencia;
+	}
+
+	public JButton getVisualizarSaldo() {
+		return visualizarSaldo;
+	}
+
+	public JButton getRemoverConta() {
+		return removerConta;
+	}
+
+	public JButton getRenderJuros() {
+		return renderJuros;
+	}
+
+	public JButton getRenderBonus() {
+		return renderBonus;
+	}/*
+	public JButton getComum() {
+		return comum;
+	}
+
+	public JButton getEspecial() {
+		return especial;
+	}
+
+	public JButton getPoupanca() {
+		return poupanca;
+	}
+
+	public JButton getImposto() {
+		return imposto;
+	}*/
+
+
 }
