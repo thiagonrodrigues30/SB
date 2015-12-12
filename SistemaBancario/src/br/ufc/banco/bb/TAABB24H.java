@@ -1,6 +1,5 @@
 package br.ufc.banco.bb;
 
-import java.io.File;
 import java.util.Scanner;
 
 import br.ufc.banco.bb.excecoes.TNRException;
@@ -12,31 +11,44 @@ import br.ufc.banco.dados.VectorContas;
 import br.ufc.banco.dados.excecoes.CEException;
 import br.ufc.banco.dados.excecoes.CIException;
 import br.ufc.banco.bb.interfacegrafica.View;
+import br.ufc.banco.bb.interfacegrafica.ViewCadastro;
+import br.ufc.banco.bb.interfacegrafica.ViewCadastroController;
 import br.ufc.banco.bb.interfacegrafica.ViewController;
+
 
 public class TAABB24H {
 
 	private static Scanner scanner = new Scanner(System.in);
-
-
-	/*VIEWS*/
-	private static View v;
-	private static ViewController vc;
-
-
-
+	public static View v = new View();
+	public static ViewController vc = new ViewController(v);
 
 	public static void main(String[] args) {
 		BancoBrasil banco = new BancoBrasil(new VectorContas());
 		boolean loop = true;
+
+		/*START*/
+
+		vc.control();
+
+
+
+
+
+		/*
+
 		while (loop) {
 			switch (menu()) {
 			case 1:
 				ContaAbstrata conta = null;
 				switch (menuCadastroConta()) {
 				case 1:
+					//ViewCadastro vcd = new ViewCadastro();
+					//ViewCadastroController vcc  = new ViewCadastroController(vcd);
+
 					System.out.println("Digite o número da conta comum: ");
 					conta = new Conta(scanner.next());
+
+
 					break;
 				case 2:
 					System.out.println("Digite o número da conta especial: ");
@@ -71,7 +83,6 @@ public class TAABB24H {
 				String numero = scanner.next();
 				System.out.println("Digite o valor a ser creditado: ");
 				double valor = scanner.nextDouble();
-				banco.desserializaConta("Conta.ser");
 				try {
 					banco.creditar(numero, valor);
 					System.out.println("Operação realizada com sucesso!");
@@ -85,7 +96,6 @@ public class TAABB24H {
 				numero = scanner.next();
 				System.out.println("Digite o valor a ser debitado: ");
 				valor = scanner.nextDouble();
-				banco.desserializaConta("Conta.ser");
 				try {
 					banco.debitar(numero, valor);
 					System.out.println("Operação realizada com Sucesso!");
@@ -101,7 +111,7 @@ public class TAABB24H {
 				String numeroDestino = scanner.next();
 				System.out.println("Digite o valor a ser debitado: ");
 				valor = scanner.nextDouble();
-				banco.desserializaConta("Conta.ser");
+
 				try {
 					banco.transferir(numeroOrigem, numeroDestino, valor);
 					System.out.println("Operação realizada com sucesso!");
@@ -113,7 +123,6 @@ public class TAABB24H {
 			case 5:
 				System.out.println("Digite o número da conta: ");
 				numero = scanner.next();
-				banco.desserializaConta("Conta.ser");
 				try {
 					System.out.println("Conta numero: " + numero);
 					System.out.println("Saldo: " + banco.saldo(numero));
@@ -125,7 +134,6 @@ public class TAABB24H {
 			case 6:
 				System.out.println("Digite o número da conta: ");
 				numero = scanner.next();
-				banco.desserializaConta("Conta.ser");
 				try {
 					banco.remover(numero);
 					System.out.println("Operação realizada com sucesso!");
@@ -136,7 +144,6 @@ public class TAABB24H {
 			case 7:
 				System.out.println("Digite o número da conta: ");
 				numero = scanner.next();
-				banco.desserializaConta("Conta.ser");
 				try {
 					banco.renderJuros(numero);
 					System.out.println("Operação realizada com sucesso!");
@@ -148,7 +155,6 @@ public class TAABB24H {
 			case 8:
 				System.out.println("Digite o número da conta: ");
 				numero = scanner.next();
-				banco.desserializaConta("Conta.ser");
 				try {
 					banco.renderBonus(numero);
 					System.out.println("Operação realizada com sucesso!");
@@ -165,8 +171,9 @@ public class TAABB24H {
 			default:
 				break;
 			}
-		}
+		}*/
 	}
+
 
 	private static int menu() {
 		System.out.println("================================");
