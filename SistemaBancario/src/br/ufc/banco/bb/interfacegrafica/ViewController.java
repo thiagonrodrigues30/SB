@@ -122,12 +122,6 @@ public class ViewController {
 	public void confirmOperation(){
 		JOptionPane.showMessageDialog(null, "Operação Realizada");
 	}
-	/*
-	public static void main(String[] args){
-		View v = new View();
-		ViewController vc = new ViewController(v);
-		vc.control();
-	}*/
 
 
 }
