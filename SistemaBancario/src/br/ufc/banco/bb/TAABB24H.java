@@ -1,7 +1,8 @@
 package br.ufc.banco.bb;
 
-import java.util.Scanner;
 
+/*// IMPORTS DESNECESSARIOS DEPOIS DE USAR AS JANELAS E JOPTIONPANES
+import java.util.Scanner;
 import br.ufc.banco.bb.excecoes.TNRException;
 import br.ufc.banco.conta.Conta;
 import br.ufc.banco.conta.ContaAbstrata;
@@ -10,31 +11,30 @@ import br.ufc.banco.conta.ContaPoupanca;
 import br.ufc.banco.dados.VectorContas;
 import br.ufc.banco.dados.excecoes.CEException;
 import br.ufc.banco.dados.excecoes.CIException;
-import br.ufc.banco.bb.interfacegrafica.View;
 import br.ufc.banco.bb.interfacegrafica.ViewCadastro;
 import br.ufc.banco.bb.interfacegrafica.ViewCadastroController;
+*/
+import br.ufc.banco.bb.interfacegrafica.View;
 import br.ufc.banco.bb.interfacegrafica.ViewController;
 
 
 public class TAABB24H {
 
-	private static Scanner scanner = new Scanner(System.in);
+	//private static Scanner scanner = new Scanner(System.in);
 	public static View v = new View();
 	public static ViewController vc = new ViewController(v);
 
 	public static void main(String[] args) {
-		BancoBrasil banco = new BancoBrasil(new VectorContas());
-		boolean loop = true;
+
+		//BancoBrasil banco = new BancoBrasil(new VectorContas());
+		//boolean loop = true;
 
 		/*START*/
 
 		vc.control();
 
 
-
-
-
-		/*
+		/*   // ORIGINAL SEM O USO DAS JANELAS SAÍDA NO PROMPT DE COMANDO
 
 		while (loop) {
 			switch (menu()) {
@@ -47,7 +47,6 @@ public class TAABB24H {
 
 					System.out.println("Digite o número da conta comum: ");
 					conta = new Conta(scanner.next());
-
 
 					break;
 				case 2:
@@ -174,7 +173,7 @@ public class TAABB24H {
 		}*/
 	}
 
-
+	/*
 	private static int menu() {
 		System.out.println("================================");
 		System.out.println("Bem Vindo ao Banco do Brasil");
@@ -207,5 +206,5 @@ public class TAABB24H {
 		System.out.print("Digite a opção desejada: ");
 		return scanner.nextInt();
 	}
-
+	*/
 }

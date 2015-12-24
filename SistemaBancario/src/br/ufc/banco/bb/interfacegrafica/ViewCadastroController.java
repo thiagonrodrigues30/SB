@@ -10,9 +10,13 @@ import br.ufc.banco.conta.ContaAbstrata;
 import br.ufc.banco.conta.ContaEspecial;
 import br.ufc.banco.conta.ContaImposto;
 import br.ufc.banco.conta.ContaPoupanca;
+import br.ufc.banco.dados.excecoes.CEException;
+import br.ufc.banco.bb.interfacegrafica.ViewController;
 
 
 public class ViewCadastroController {
+
+
 
 	private ActionListener actionListener;
 	private ViewCadastro viewCadastro;
@@ -29,13 +33,8 @@ public class ViewCadastroController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+
 				ContaAbstrata conta = null;
-				/*
-				// CHAMADA PARA ENTER VALUE
-				EnterValue a = new EnterValue();
-				EnterValueController vc = new EnterValueController(a);
-				vc.control();
-				*/
 
 				if(e.getSource()==viewCadastro.getBtComum()){
 
@@ -75,6 +74,13 @@ public class ViewCadastroController {
 					ViewController vc = new ViewController(v);
 					vc.control();
 					//TAABB24H.vc.control(); // same Object
+				}
+				if (conta != null) {
+					try {
+						ViewController.banco.cadastrar(conta);
+					} catch (CEException cjee) {
+						System.out.println("Erro: " + cjee.getMessage());
+					}
 				}
 
 			}
